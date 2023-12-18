@@ -5,6 +5,8 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from dotenv import load_dotenv
 import os
+import logging
+import json
 from authlib.integrations.flask_client import OAuth
 from authlib.common.security import generate_token
 
@@ -21,6 +23,7 @@ load_dotenv()
 ## OAuth
 GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID')
 GOOGLE_CLIENT_SECRET = os.getenv('GOOGLE_CLIENT_SECRET')
+REDIRECT_URI = "http://127.0.0.1:8000/google/auth"
 
 app = Flask(__name__)
 
@@ -32,18 +35,20 @@ oauth = OAuth(app)
 
 # Initialize the SQLAlchemy instance
 
-
+#
 @app.route('/')
 def index():
     return render_template('home.html')
 
+
 @app.route('/google/')
 def google():
+    CONF_URL = 'https://accounts.google.com/.well-known/openid-configuration'
     oauth.register(
         name='google',
         client_id=GOOGLE_CLIENT_ID,
         client_secret=GOOGLE_CLIENT_SECRET,
-        authorize_url= "https://accounts.google.com/o/oauth2/v2/auth",
+        server_metadata_url=CONF_URL,
         client_kwargs={
             'scope': 'openid email profile'
         }
@@ -52,12 +57,11 @@ def google():
     # Redirect to google_auth function
     ###note, if running locally on a non-google shell, do not need to override redirect_uri
     ### and can just use url_for as below
-    redirect_uri = url_for('google_auth', _external=True)
-    print('REDIRECT URL: ', redirect_uri)
+    #redirect_uri = url_for('google_auth', _external=True)
     session['nonce'] = generate_token()
     ##, note: if running in google shell, need to override redirect_uri 
     ## to the external web address of the shell, e.g.,
-    redirect_uri = 'https://8000-cs-51349017989-default.cs-us-east1-vpcf.cloudshell.dev/google/auth/'
+    redirect_uri = 'https://8000-cs-743936412124-default.cs-us-east1-rtep.cloudshell.dev/google/auth/'
     return oauth.google.authorize_redirect(redirect_uri, nonce=session['nonce'])
 
 @app.route('/google/auth/')
@@ -65,9 +69,14 @@ def google_auth():
     token = oauth.google.authorize_access_token()
     user = oauth.google.parse_id_token(token, nonce=session['nonce'])
     session['user'] = user
-    update_or_create_user(user)
     print(" Google User ", user)
-    return redirect('/home')
+    return redirect('/dash')
+
+@app.route('/dash')
+def dashboard():
+    if "user" in session:
+        return json.dumps({"message": "you are logged in"})
+    return redirect(url_for("index"))
 
 if __name__ == '__main__':
     app.run(
