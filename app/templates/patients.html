@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Tailwind CSS via CDN -->
+     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<!-- Top Bar Nav -->
+<nav class="w-full h-16 py-4 bg-pink-600 shadow mx-auto">
+     <div class="max-w-screen-md container mx-auto flex flex-wrap items-center justify-between">
+        <button class="text-white hover:text-gray-300 focus:outline-none"><a href="/home" >Home</a></button>
+        <button class="text-white hover:text-gray-300 focus:outline-none"><a href="/patients">Patient Database</a></button>
+        <button class="text-white hover:text-gray-300 focus:outline-none"><a href="/indicators">Indicators</a></button>
+        <button class="text-white hover:text-gray-300 focus:outline-none"><a href="/addpatient">Add Patient</a></button>
+        <button class="text-white hover:text-gray-300 focus:outline-none"><a href="/logout">Logout</a></button>
+     </div>
+ </nav>
+
+<title>
+</title>
+</head>
+<body style="text-align: center;">
+    <table class="border-collapse border border-gray-400">
+        <thead>
+            <tr>
+                <th class="border border-gray-400 p-2">ID</th> 
+                <th class="border border-gray-400 p-2">Name</th>
+                <th class="border border-gray-400 p-2">Age</th>
+                <th class="border border-gray-400 p-2">Last Visit</th>
+                <th class="border border-gray-400 p-2">Reason for Visit</th>
+                <th class="border border-gray-400 p-2">Patient History</th>
+                <th class="border border-gray-400 p-2">Temperature</th>
+                <th class="border border-gray-400 p-2">Weight</th> 
+                <th class="border border-gray-400 p-2">Height</th>
+                <th class="border border-gray-400 p-2">Blood Pressure</th>
+                <th class="border border-gray-400 p-2">Symptoms</th>
+                <th class="border border-gray-400 p-2">Diagnosis</th>
+                <th class="border border-gray-400 p-2">Treatment</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for record in patients %}
+                <tr>
+                    <td class="border border-gray-400 p-2">{{ record.id }}</td> 
+                    <td class="border border-gray-400 p-2">{{ record.name }}</td>
+                    <td class="border border-gray-400 p-2">{{ record.age }}</td>
+                    <td class="border border-gray-400 p-2">{{ record.last_visit }}</td>
+                    <td class="border border-gray-400 p-2">{{ record.reason_for_visit }}</td>
+                    <td class="border border-gray-400 p-2">{{ record.patient_history }}</td>
+                    <td class="border border-gray-400 p-2">{{ record.temperature }}</td>
+                    <td class="border border-gray-400 p-2">{{ record.weight }}</td> 
+                    <td class="border border-gray-400 p-2">{{ record.height }}</td>
+                    <td class="border border-gray-400 p-2">{{ record.blood_pressure }}</td>
+                    <td class="border border-gray-400 p-2">{{ record.symptoms }}</td>
+                    <td class="border border-gray-400 p-2">{{ record.diagnosis }}</td>
+                    <td class="border border-gray-400 p-2">{{ record.treatment }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

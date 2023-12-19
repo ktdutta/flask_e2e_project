@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Tailwind CSS via CDN -->
+     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<!-- Top Bar Nav -->
+<nav class="w-full h-16 py-4 bg-pink-600 shadow mx-auto">
+     <div class="max-w-screen-md container mx-auto flex flex-wrap items-center justify-between">
+        <button class="text-white hover:text-gray-300 focus:outline-none"><a href="/home" >Home</a></button>
+        <button class="text-white hover:text-gray-300 focus:outline-none"><a href="/patients">Patient Database</a></button>
+        <button class="text-white hover:text-gray-300 focus:outline-none"><a href="/indicators">Indicators</a></button>
+        <button class="text-white hover:text-gray-300 focus:outline-none"><a href="/addpatient">Add Patient</a></button>
+        <button class="text-white hover:text-gray-300 focus:outline-none"><a href="/logout">Logout</a></button>
+     </div>
+ </nav>
+
+<title>
+</title>
+</head>
+<body style="text-align: center;">
+    <form style="padding-top: 1%" action="/addpatient" method="post">
+        <div style= "padding: 12px 20px;">
+        <label for="name">Name:</label>
+        <input style="border: 1px solid" type="text" id="name" name="name" required><br>
+        </div>
+
+        <div style= "padding: 12px 20px;">
+        <label for="age">Age:</label>
+        <input style="border: 1px solid"  type="number" id="age" name="age"><br>
+        </div>
+
+        <div style= "padding: 12px 20px;">
+        <label for="last_visit">Last Visit:</label>
+        <input style="border: 1px solid" type="date" id="last_visit" name="last_visit"><br>
+        </div>
+
+        <div style= "padding: 12px 20px;">
+        <label for="reason_for_visit">Reason for Visit:</label>
+        <input style="border: 1px solid" type="text" id="reason_for_visit" name="reason_for_visit"><br>
+        </div>
+
+        <div style= "padding: 12px 20px;">
+        <label for="patient_history">Patient History:</label>
+        <textarea style="border: 1px solid" id="patient_history" name="patient_history"></textarea><br>
+        </div>
+
+        <div style= "padding: 12px 20px;">
+        <label for="temperature">Temperature:</label>
+        <input style="border: 1px solid" type="text" id="temperature" name="temperature" pattern="\d+(\.\d{1,2})?"><br>
+        </div>
+
+        <div style= "padding: 12px 20px;">
+        <label for="weight">Weight:</label>
+        <input  style="border: 1px solid" type="text" id="weight" name="weight" pattern="\d+(\.\d{1,2})?"><br>
+        </div>
+
+        <div style= "padding: 12px 20px;">
+        <label for="height">Height:</label>
+        <input style="border: 1px solid" type="text" id="height" name="height" pattern="\d+(\.\d{1,2})?"><br>
+        </div>
+
+        <div style= "padding: 12px 20px;">
+        <label for="blood_pressure">Blood Pressure:</label>
+        <input style="border: 1px solid" type="text" id="blood_pressure" name="blood_pressure"><br>
+        </div>
+
+        <div style= "padding: 12px 20px;">
+        <label for="symptoms">Symptoms:</label>
+        <textarea style="border: 1px solid" id="symptoms" name="symptoms"></textarea><br>
+        </div>
+
+        <div style= "padding: 12px 20px;">
+        <label for="diagnosis">Diagnosis:</label>
+        <input style="border: 1px solid" type="text" id="diagnosis" name="diagnosis"><br>
+        </div>
+
+        <div style= "padding: 12px 20px;">
+        <label for="treatment">Treatment:</label>
+        <textarea style="border: 1px solid" id="treatment" name="treatment"></textarea><br>
+        </div>
+
+        <input style="border: 1px solid" type="submit" value="Submit">
+      </form>
+</body>
+</html>
