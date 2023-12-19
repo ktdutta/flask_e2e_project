@@ -1,0 +1,10 @@
+flask
+flask_sqlalchemy
+sqlalchemy
+sqlalchemy.orm
+sqlalchemy.ext.declarative
+dotenv 
+authlib.integrations.flask_client
+authlib.common.security
+datetime
+sqlalchemy.orm
