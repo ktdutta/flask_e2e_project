@@ -5,6 +5,11 @@
 
 For my final project I decided to create a patient database application which healthcare workers such as medical scribes can utilize when taking preliminary visit notes during the patient’s visit. The application requires google authorization before gaining access to the application. Once you gain access to the application, there are two functions you can perform: view previous patient visit history (past user inputted data) and add new patient visit information via a form. You can access these two functions using the navigation bar on the home page. 
 
+Here is a demo of my application
+
+
+https://github.com/ktdutta/flask_e2e_project/assets/141374153/21aa2936-28fc-4205-baba-f0008b90763c
+
 
 ## Technology Used 
 
