@@ -1,10 +1,6 @@
-flask
-flask_sqlalchemy
-sqlalchemy
-sqlalchemy.orm
-sqlalchemy.ext.declarative
-dotenv 
-authlib.integrations.flask_client
-authlib.common.security
+flask==3.0.0
+flask_sqlalchemy==3.1.1
+SQLAlchemy==2.0.23
+dotenv
+authlib
 datetime
-sqlalchemy.orm
